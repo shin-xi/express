@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        function print(data) {
+            console.log(data);
+        }
+        $(() => {
+            $.ajax({
+                url: "http://localhost:3000/jsonp",
+                type: "get",
+                dataType: "jsonp",
+                jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+                jsonpCallback: "print",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+            })
+                .done(() => {
+                    console.log("success");
+                })
+                .fail(() => {
+                    console.log("error");
+                })
+                .always(() => {
+                    console.log("complete");
+                });
+        })
+    </script>
+</body>
+
+</html>

@@ -7,7 +7,7 @@ function common(req, res) {
 }
 
 // 挂载至 /book 的中间件，任何指向 /book 的请求都会执行它
-router.use('/book', function (req, res, next) {
+router.use('/book', (req, res, next) => {
     console.log('Request Type:', req.method);
     res.setHeader("x-powered-by", ' 3.2.1');
     next();
@@ -25,6 +25,19 @@ router.route('/book')
     .put((req, res) => {
         common();
         res.send('Update the book');
+    });
+
+
+const cb = (req, res) => {
+    res.json({ msg: 'success' });
+};
+
+router.route('/chain')
+    .get((req, res) => {
+        cb(req, res);
+    })
+    .post((req, res) => {
+        cb(req, res);
     });
 
 module.exports = router;

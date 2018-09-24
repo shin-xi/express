@@ -3,6 +3,7 @@ const app = express();
 const basic = require('./demo/basic');
 const reqHeaders = require('./book/6/reqHeaders');
 const reqInfo = require('./book/6/reqInfo');
+const session = require('./book/9/session');
 
 // 去除回包头 X-Powered-By: Express
 app.disable('x-powered-by');
@@ -30,7 +31,6 @@ app.use((req, res, next) => {
     // res.set("Access-Control-Allow-Headers", "X-Requested-With");
     // res.set("Access-Control-Allow-Methods", "GET");
     // res.set("Content-Type", "application/json;charset=utf-8");
-
     next();
 });
 
@@ -38,10 +38,10 @@ app.use((req, res, next) => {
 app.use('/', require('cors')());
 
 // 外部模块
-app.use('/', [basic, reqHeaders, reqInfo]);
+app.use('/', [basic, reqHeaders, reqInfo, session]);
 
 // 错误处理中间件
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });

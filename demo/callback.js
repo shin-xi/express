@@ -12,17 +12,17 @@ router.get('/example/next1', (req, res, next) => {
 });
 
 // 外部回调函数
-const cb0 = function (req, res, next) {
+const cb0 = (req, res, next) => {
     console.log('CB0');
     next();
 };
 
-const cb1 = function (req, res, next) {
+const cb1 = (req, res, next) => {
     console.log('CB1');
     next();
 };
 
-const cb2 = function (req, res) {
+const cb2 = (req, res, next) => {
     res.send('Hello from C!');
 };
 

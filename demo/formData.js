@@ -33,7 +33,7 @@ const upload = multer({ // 设置 limits 可以帮助保护你的站点免受拒
         fieldNameSize: 100, // field 名字最大长度
         fieldSize: 1024, // field 值的最大长度
         fields: 5, // 非文件 field 的最大数量
-        fileSize: 1024 * 1024, // 在 multipart 表单中，文件最大长度 (字节单位)
+        fileSize: 1024 * 1024 * 10, // 在 multipart 表单中，文件最大长度 (字节单位)
         files: 10, // 在 multipart 表单中，文件最大数量
         parts: 15, // 在 multipart 表单中，part 传输的最大数量(fields + files)
         headerPairs: 50 // 在 multipart 表单中，键值对最大组数
