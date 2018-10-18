@@ -27,6 +27,7 @@ app.use('/', express.static('static'));
 // 反向代理（这里把需要进行反代的路径配置到这里即可）
 // eg:将/api/test 代理到 ${HOST}/api/test
 app.use(proxy('/api/test', { target: HOST }));
+// app.use(proxy(/.*/, { target: HOST }));
 
 // 监听端口
 app.listen(app.get('port'), () => {

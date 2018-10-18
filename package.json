@@ -8,10 +8,12 @@
     "appDemo": "nodemon appDemo",
     "appBook": "nodemon appBook",
     "appProxy": "nodemon appProxy",
+    "appProxy2": "nodemon appProxy2",
     "appWs": "nodemon appWs",
     "appSocket": "nodemon appSocket.io"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "compression": "^1.7.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
