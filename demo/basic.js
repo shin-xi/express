@@ -10,7 +10,10 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-    res.send('Hello world!');
+    // res.send('Hello world!');
+    setTimeout(() => {
+        res.send('Hello world!');
+    }, 5000);
 });
 
 
@@ -24,7 +27,7 @@ router.get('/status', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    res.send('Hello world!')
+    res.send('Hello world!');
 });
 
 router.get('/api/test', (req, res) => { // 反向代理 + 代发请求
