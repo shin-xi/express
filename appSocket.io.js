@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const compression = require('compression');
 
-const server = app.listen(3000, 'localhost', () => {
+// const host = '10.8.16.157';
+const host = 'localhost';
+const server = app.listen(3000, host, () => {
     const host = server.address().address;
     const port = server.address().port;
 

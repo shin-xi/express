@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Socket.IO chat</title>
     <style>
@@ -63,7 +64,9 @@
 </form>
 <script src="https://cdn.bootcss.com/socket.io/2.1.1/socket.io.js"></script>
 <script>
-    const socket = io('http://localhost:3000');
+    // const host = '10.8.16.157';
+    const host = 'localhost';
+    const socket = io(`http://${host}:3000`);
     const form = document.querySelector('form');
     const msg = document.querySelector('#msg');
     const messages = document.querySelector('#messages');
