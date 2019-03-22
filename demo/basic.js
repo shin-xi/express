@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
     }, 5000);
 });
 
-
 router.get('/cookies', (req, res) => {
     res.jsonp(req.cookies);
 });

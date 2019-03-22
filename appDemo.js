@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const os = require('os');
 const basic = require('./demo/basic');
 const redirect = require('./demo/redirect');
 const pattern = require('./demo/pattern');
@@ -60,7 +61,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
-const server = app.listen(3000, 'localhost', () => {
+const server = app.listen(3000, os.networkInterfaces()['以太网'][1].address || 'localhost', () => {
     const host = server.address().address;
     const port = server.address().port;
 
