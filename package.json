@@ -10,7 +10,8 @@
     "appProxy": "nodemon appProxy",
     "appProxy2": "nodemon appProxy2",
     "appWs": "nodemon appWs",
-    "appSocket": "nodemon appSocket.io"
+    "appSocket": "nodemon appSocket.io",
+    "appAdmin": "nodemon appAdmin"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -34,6 +35,13 @@
     "express": "^4.16.3",
     "http-proxy-middleware": "^0.18.0",
     "mysql": "^2.16.0",
-    "nodemon": "^1.17.4"
+    "nodemon": "^1.17.4",
+    "eslint": "^5.7.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }

@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const bodyParser = require('body-parser');
+const express = require('express')
+const router = express.Router()
+const bodyParser = require('body-parser')
 
 // // Express/Connect top-level generic
 // // parse application/x-www-form-urlencoded
@@ -17,22 +17,22 @@ const bodyParser = require('body-parser');
 
 // Express route-specific
 // create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // create application/json parser
-const jsonParser = bodyParser.json();
+const jsonParser = bodyParser.json()
 
 // POST /login gets urlencoded bodies
 router.post('/urlencodedParser', urlencodedParser, (req, res) => {
-    if (!req.body) return res.sendStatus(400);
-    res.json(req.body);
-});
+  if (!req.body) return res.sendStatus(400)
+  res.json(req.body)
+})
 
 // POST /api/users gets JSON bodies
 router.post('/jsonParser', jsonParser, (req, res) => {
-    if (!req.body) return res.sendStatus(400);
-    res.json(req.body);
-});
+  if (!req.body) return res.sendStatus(400)
+  res.json(req.body)
+})
 
 // ---------------------------------------------------- //
 
@@ -54,5 +54,4 @@ router.post('/jsonParser', jsonParser, (req, res) => {
 
 // ---------------------------------------------------- //
 
-
-module.exports = router;
+module.exports = router

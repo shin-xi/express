@@ -1,7 +1,7 @@
 const data = {
-    name: 'shino'
-};
+  name: 'shino'
+}
 
 module.exports = {
-    data
-};
+  data
+}
