@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const demo = require('./vueAdmin/demo')
+const token = require('./vueAdmin/token')
 
 // 去除回包头 X-Powered-By: Express
 app.disable('x-powered-by')
@@ -9,7 +10,7 @@ app.disable('x-powered-by')
 app.use('/', require('cors')())
 
 // 外部模块
-app.use('/', [demo])
+app.use('/', [demo, token])
 
 // 错误处理中间件
 app.use((err, req, res, next) => {

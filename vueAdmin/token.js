@@ -1,3 +1,6 @@
+// 1.获取token
+// 2.根据token拉取用户信息
+
 const express = require('express')
 const router = express.Router()
 const jwt = require('jwt-simple')
@@ -5,23 +8,16 @@ const bodyParser = require('body-parser')
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const payload = { name: 'shino', exp: new Date(2018, 9, 1, 0, 0, 0).getTime() }
-const secret = 'noSecret'
+const secret = 'myAdmin'
 
 // HS256 secrets are typically 128-bit random strings, for example hex-encoded:
 // const secret = Buffer.from('fe1a1915a379f3be5394b64d14794932', 'hex)
 
 // encode
-const token = jwt.encode(payload, secret)
+// const token = jwt.encode(payload, secret)
 
 // decode
-const decoded = jwt.decode(token, secret)
-// console.log(token);
-// console.log(decoded); //=> { foo: 'bar' }
-
-const userInfo = { // 登陆信息
-  name: 'shino',
-  password: 'helpme'
-}
+// const decoded = jwt.decode(token, secret)
 
 router.post('/getToken', urlencodedParser, (req, res) => {
   // res.json(token)
@@ -35,8 +31,6 @@ router.post('/getToken', urlencodedParser, (req, res) => {
     token: userToken
   })
 })
-
-// "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoic2hpbm8iLCJwYXNzd29yZCI6ImhlbHBtZSJ9.PdmkAb9qhoLIxOuiF7waB2Stt4IUzUSjx69eB-kHUMo"
 
 router.post('/getUserInfo', urlencodedParser, (req, res) => {
   // res.json(token)
