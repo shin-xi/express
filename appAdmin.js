@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const os = require('os')
 const demo = require('./vueAdmin/demo')
 const token = require('./vueAdmin/token')
 
@@ -18,7 +19,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
-const server = app.listen(3000, '192.168.31.16', () => {
+const server = app.listen(3000,  os.networkInterfaces()['以太网'][1].address || 'localhost', () => {
   const host = server.address().address
   const port = server.address().port
 

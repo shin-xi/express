@@ -5,9 +5,9 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jwt-simple')
 const bodyParser = require('body-parser')
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({extended: false})
 
-const payload = { name: 'shino', exp: new Date(2018, 9, 1, 0, 0, 0).getTime() }
+const payload = {name: 'shino', exp: new Date(2018, 9, 1, 0, 0, 0).getTime()}
 const secret = 'myAdmin'
 
 // HS256 secrets are typically 128-bit random strings, for example hex-encoded:
@@ -19,29 +19,23 @@ const secret = 'myAdmin'
 // decode
 // const decoded = jwt.decode(token, secret)
 
-router.post('/getToken', urlencodedParser, (req, res) => {
-  // res.json(token)
-  const { name, password } = req.body // 获取接口的 用户名和密码
-  // 假定登陆成功
-  const userToken = jwt.encode({
-    name, password
-  }, secret)
+router.post('/login', urlencodedParser, (req, res) => {
+    const {name, password} = req.body // 获取接口的 用户名和密码
+    // 假定判断登陆成功
 
-  res.json({
-    token: userToken
-  })
-})
+    const oriData = {
+        name,
+        date: Date.now()
+    }
 
-router.post('/getUserInfo', urlencodedParser, (req, res) => {
-  // res.json(token)
-  const { token } = req.body // 获取接口的 用户名和密码
-  // 假定登陆成功
-  const userInfo = jwt.decode(token, secret)
+    const userToken = jwt.encode(oriData, secret)
+    console.log(oriData)
 
-  res.json({
-    ...userInfo,
-    role: 'admin'
-  })
+    res.json({
+        name,
+        token: userToken,
+        role:'admin'
+    })
 })
 
 module.exports = router
