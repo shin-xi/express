@@ -19,7 +19,7 @@ const secret = 'myAdmin'
 // decode
 // const decoded = jwt.decode(token, secret)
 
-router.post('/login', urlencodedParser, (req, res) => {
+router.post('/login', urlencodedParser, (req, res) => { // 登陆后返回token
     const {name, password} = req.body // 获取接口的 用户名和密码
     // 假定判断登陆成功
 
@@ -32,9 +32,7 @@ router.post('/login', urlencodedParser, (req, res) => {
     console.log(oriData)
 
     res.json({
-        name,
-        token: userToken,
-        role:'admin'
+        token: userToken
     })
 })
 
