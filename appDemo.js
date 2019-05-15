@@ -61,7 +61,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
-const server = app.listen(3000, os.networkInterfaces()['以太网'][1].address || 'localhost', () => {
+const server = app.listen(3000, 'localhost', () => {
   const host = server.address().address
   const port = server.address().port
 
