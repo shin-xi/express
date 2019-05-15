@@ -1,24 +1,19 @@
 const express = require('express')
+const proxy = require('http-proxy-middleware')
 const app = express()
-const axios = require('axios')
 
-app.get(/.*/, (req, res) => {
-  console.log(req.headers)
-  console.log(req.protocol)
-  axios({
-    method: 'get',
-    url: 'http://jsonplaceholder.typicode.com/posts'
-  }).then(res => {
-    console.log(res.data)
-  })
+app.use('/api', proxy({
+  target: 'http://119.29.163.132.48403',
+  changeOrigin: true,
+  pathRewrite: {
+    '^/api': ''
+  }
+}))
 
-  res.end('success')
+app.use(express.static('dist'))
+
+app.get('*', (req, res) => {
+  res.sendfile('./dist/index.html')
 })
 
-// 监听端口
-const server = app.listen(8888, 'localhost', () => {
-  const host = server.address().address
-  const port = server.address().port
-
-  console.log(`listening at http://${host}:${port}`)
-})
+app.listen(80, () => console.log('连接成功'))
