@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const os = require('os')
+// const os = require('os')
 const basic = require('./demo/basic')
 const redirect = require('./demo/redirect')
 const pattern = require('./demo/pattern')
