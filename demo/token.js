@@ -12,6 +12,7 @@ const secret = 'noSecret'
 
 // encode
 const token = jwt.encode(payload, secret)
+console.log(token)
 
 // decode
 const decoded = jwt.decode(token, secret)
