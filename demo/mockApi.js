@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mockData = require('./mockData/dataDemo')
+const chinaAreaData = require('./mockData/chinaAreaData')
 
 // 挂载至 /book 的中间件，任何指向 /book 的请求都会执行它
 router.use('/mock', (req, res, next) => {
@@ -53,6 +54,21 @@ router.route('/configJson/:id')
     res.json({
       id: req.params.id,
       ...configJson
+    })
+  })
+
+router.route('/street')
+  .get((req, res) => {
+    const code = req.query.code
+    const data = chinaAreaData.filter(v => +v.parent_id === +code).map(v => {
+      return {
+        value: '' + v.id,
+        label: v.name
+      }
+    })
+
+    res.json({
+      data
     })
   })
 

@@ -10,10 +10,11 @@ router.use((req, res, next) => {
 })
 
 router.get('/', (req, res) => {
-  // res.send('Hello world!');
-  setTimeout(() => {
-    res.send('Hello world!')
-  }, 5000)
+  console.log(req.headers)
+  res.send('Hello world!')
+  // setTimeout(() => {
+  //   res.send('Hello world!')
+  // }, 5000)
 })
 
 router.get('/cookies', (req, res) => {
