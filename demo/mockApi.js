@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const mockData = require('./mockData/dataDemo')
 const chinaAreaData = require('./mockData/chinaAreaData')
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+const path = require('path')
 
 // 挂载至 /book 的中间件，任何指向 /book 的请求都会执行它
 router.use('/mock', (req, res, next) => {
@@ -69,6 +72,42 @@ router.route('/street')
 
     res.json({
       data
+    })
+  })
+
+// 压力测试demon
+router.post('/api/amcid/7/debts', jsonParser, (req, res) => {
+  if (!req.body) return res.sendStatus(400)
+  console.log(req.body)
+  res.json(req.body)
+})
+
+const options = {
+  root: path.join(__dirname, '/public/'),
+  dotfiles: 'deny',
+  headers: {
+    'x-timestamp': Date.now(),
+    'x-sent': true
+  }
+}
+
+router.route('/getExcel')
+  .get((req, res, next) => {
+    res.sendFile('demo.xlsx', options, (err) => {
+      if (err) {
+        next(err)
+      } else {
+        console.log('Sent:', 'demo.xlsx')
+      }
+    })
+  })
+  .post((req, res) => {
+    res.sendFile('demo.xlsx', options, (err) => {
+      if (err) {
+        next(err)
+      } else {
+        console.log('Sent:', 'demo.xlsx')
+      }
     })
   })
 
