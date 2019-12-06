@@ -101,13 +101,20 @@ router.route('/getExcel')
       }
     })
   })
-  .post((req, res) => {
+  .post((req, res, next) => {
     res.sendFile('demo.xlsx', options, (err) => {
       if (err) {
         next(err)
       } else {
         console.log('Sent:', 'demo.xlsx')
       }
+    })
+  })
+
+router.route('/login')
+  .post((req, res) => {
+    res.json({
+      msg: 'ok'
     })
   })
 
